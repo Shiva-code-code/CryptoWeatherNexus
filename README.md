@@ -1,118 +1,115 @@
 # CryptoWeather Nexus
 
-**CryptoWeather Nexus** is a modern web application that combines real-time cryptocurrency data, weather information, and live notifications using WebSocket connections. Users can explore live data for cryptocurrencies and weather conditions for different cities. Additionally, the app allows users to set real-time price and weather alerts.
+CryptoWeather Nexus is a modern dashboard that displays live cryptocurrency prices, weather data, and crypto news, with real-time notifications using WebSocket. Built with Next.js, React, Redux, and Tailwind CSS, it’s fast, responsive, and practical.
 
-## Table of Contents
-- [Overview](#overview)
-- [Setup & Installation](#setup--installation)
-- [Usage](#usage)
-- [Design Decisions](#design-decisions)
-- [API Integrations](#api-integrations)
-- [Real-Time Notifications](#real-time-notifications)
-- [Challenges & Solutions](#challenges--solutions)
-- [API Documentation](#api-documentation)
-- [License](#license)
+---
 
-## Overview
-**CryptoWeather Nexus** is built with **Next.js (v13+)** and **React**, using **Redux** for global state management and **Tailwind CSS** for responsive design. The app features real-time updates for cryptocurrency prices and weather data, providing users with a unified platform for financial and environmental monitoring.
+## 📌 Overview
 
-### Features:
-- Real-time cryptocurrency data (prices, changes, trends).
-- Weather data (current temperature, humidity, conditions).
-- City and cryptocurrency pages for detailed exploration.
-- Real-time WebSocket notifications for price changes and weather conditions.
+- **Framework:** Next.js 13+
+- **Frontend:** React with Hooks
+- **Styling:** Tailwind CSS
+- **State Management:** Redux Toolkit (with Thunks)
+- **Live Data:** CoinGecko, OpenWeatherMap, NewsData.io
+- **WebSocket:** CoinCap (live crypto prices), mock alerts for weather
 
-## Setup & Installation
+---
 
-To run this project locally, follow these steps:
+## 🚀 Features
 
-### 1. Clone the Repository:
+- Real-time cryptocurrency prices, 24h change, market cap
+- Current weather data for major cities
+- Crypto news headlines from NewsData.io
+- Crypto and city detail pages with history
+- Live WebSocket-based price/weather alerts
+- Favorite cities and cryptos
+- Fully responsive layout
+
+---
+
+## ⚙️ Setup & Installation
+
+### 1. Clone the repo
 ```bash
 git clone https://github.com/yourusername/crypto-weather-nexus.git
 cd crypto-weather-nexus
-```
-
-### 2. Install Dependencies:
-```bash
+2. Install dependencies
+bash
+Copy
+Edit
 npm install
-```
+3. Add environment variables
+Create a .env.local file:
 
-### 3. Environment Variables:
-Create a `.env` file in the root of your project and add the following:
-
-```
-NEXT_PUBLIC_CRYPTO_API_KEY=your_crypto_api_key
-NEXT_PUBLIC_WEATHER_API_KEY=your_weather_api_key
-NEXT_PUBLIC_WEBSOCKET_URL=your_websocket_url
-```
-
-- `NEXT_PUBLIC_CRYPTO_API_KEY`: Your API key for cryptocurrency data.
-- `NEXT_PUBLIC_WEATHER_API_KEY`: Your API key for weather data.
-- `NEXT_PUBLIC_WEBSOCKET_URL`: WebSocket URL for real-time notifications.
-
-### 4. Run the Application:
-```bash
+ini
+Copy
+Edit
+NEXT_PUBLIC_CRYPTO_API_KEY=your_crypto_key
+NEXT_PUBLIC_WEATHER_API_KEY=your_weather_key
+NEXT_PUBLIC_NEWS_API_KEY=your_newsdata_key
+NEXT_PUBLIC_WEBSOCKET_URL=wss://ws.coincap.io/prices?assets=bitcoin,ethereum
+4. Start the dev server
+bash
+Copy
+Edit
 npm run dev
-```
+Visit: http://localhost:3000
 
-Visit `http://localhost:3000` in your browser to view the app.
+📁 Folder Structure
+bash
+Copy
+Edit
+src/
+├── app/
+├── components/
+├── lib/api/
+├── redux/
+└── styles/
+🔌 APIs Used
+CoinGecko – Crypto prices
 
-## Usage
+OpenWeatherMap – Weather data
 
-- **Explore Cryptocurrencies**: Navigate to the "Cryptocurrencies" section to view live data for various coins like Bitcoin, Ethereum, etc.
-- **Weather Exploration**: Visit the "Weather" section to check the weather for different cities in real time.
-- **Set Alerts**: You can set price and weather alerts to be notified via WebSocket when thresholds are met.
+NewsData.io – Crypto news
 
-## Design Decisions
+CoinCap WebSocket – Live crypto updates
 
-- **Next.js & React**: Chosen for their flexibility and ability to easily handle SSR (server-side rendering) and static site generation for fast load times.
-- **Redux**: Used for global state management, ensuring efficient data handling across components.
-- **Tailwind CSS**: A utility-first CSS framework was selected for rapid styling and responsive design.
-- **WebSocket**: Used for real-time notifications, keeping users updated on the latest cryptocurrency price changes and weather updates.
+🔔 Real-Time Notifications
+BTC/ETH prices update live using WebSocket
 
-## API Integrations
+Weather alerts simulated via custom dispatch
 
-### 1. **Crypto API (CoinGecko)**:
-The app uses the CoinGecko API to fetch real-time cryptocurrency data, including prices, trends, and market data.
+Notifications handled via Redux & shown as toasts
 
-- **API Endpoint**: `/coins/markets`
-- **Required Parameters**: 
-    - `vs_currency`: The currency to compare (e.g., USD).
-    - `ids`: A comma-separated list of cryptocurrency IDs (e.g., `bitcoin,ethereum`).
+🌐 Routing
+/ – Dashboard (Weather, Crypto, News)
 
-### 2. **Weather API (OpenWeatherMap)**:
-The app fetches real-time weather data for various cities using the OpenWeatherMap API.
+/crypto/[id] – Crypto detail page
 
-- **API Endpoint**: `/data/2.5/weather`
-- **Required Parameters**: 
-    - `q`: The city name (e.g., `London`).
-    - `appid`: Your OpenWeatherMap API key.
+/city/[name] – City weather detail page
 
-## Real-Time Notifications
+📦 Deployment
+Deployed on Vercel
 
-The app uses WebSocket connections for real-time notifications. This allows users to be alerted immediately when:
-- A cryptocurrency’s price reaches a predefined threshold.
-- Weather conditions in a specific city change significantly.
+All API keys managed with .env.local
 
-### WebSocket Implementation:
-- A WebSocket server is set up to broadcast notifications to all connected clients whenever there is a price or weather update.
+🧠 Challenges Solved
+API rate limiting handled via retry + caching
 
-## Challenges & Solutions
+SSR-compatible deep links for detail pages
 
-### Challenge 1: **Handling Real-Time Data**
-- **Solution**: Implemented WebSocket to manage real-time data for cryptocurrency and weather updates, ensuring users receive instant notifications when changes occur.
+Responsive design with Tailwind CSS
 
-### Challenge 2: **Rate Limiting on APIs**
-- **Solution**: To handle rate limiting, caching was implemented for API requests to reduce unnecessary load on the servers and improve app performance.
+Mock WebSocket events for weather alerts
 
-### Challenge 3: **Responsive Design**
-- **Solution**: Used Tailwind CSS for responsive layouts to ensure the app functions well on both desktop and mobile devices.
+📄 Assignment Scope
+Multi-page dashboard (Weather, Crypto, News)
 
-## API Documentation
+Detail pages with history/charts
 
-- **CoinGecko API**: [CoinGecko API Docs](https://www.coingecko.com/en/api)
-- **OpenWeatherMap API**: [OpenWeatherMap API Docs](https://openweathermap.org/api)
-- **WebSocket Protocol**: The WebSocket server follows a simple push notification protocol, notifying clients of relevant data updates.
+Real-time updates via WebSocket
 
+Favorites & local storage state
 
+Public GitHub + deployed site
 
