@@ -114,5 +114,11 @@ The app uses WebSocket connections for real-time notifications. This allows user
 - **OpenWeatherMap API**: [OpenWeatherMap API Docs](https://openweathermap.org/api)
 - **WebSocket Protocol**: The WebSocket server follows a simple push notification protocol, notifying clients of relevant data updates.
 
+## Deployment
+
+You can view the live app here:  
+🔗 [CryptoWeather Nexus - Live Demo]([https://your-deployed-app.vercel.app])
+
+This project is deployed on [Vercel](https://vercel.com/) with environment variables securely managed in the dashboard.
 
 
