@@ -11,7 +11,7 @@
 - [Real-Time Notifications](#real-time-notifications)
 - [Challenges & Solutions](#challenges--solutions)
 - [API Documentation](#api-documentation)
-- [License](#license)
+  
 
 ## Overview
 **CryptoWeather Nexus** is built with **Next.js (v13+)** and **React**, using **Redux** for global state management and **Tailwind CSS** for responsive design. The app features real-time updates for cryptocurrency prices and weather data, providing users with a unified platform for financial and environmental monitoring.
