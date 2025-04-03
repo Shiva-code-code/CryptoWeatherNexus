@@ -117,7 +117,7 @@ The app uses WebSocket connections for real-time notifications. This allows user
 ## Deployment
 
 You can view the live app here:  
-🔗 [CryptoWeather Nexus - Live Demo]([https://your-deployed-app.vercel.app])
+🔗 [CryptoWeather Nexus - Live Demo]([[https://your-deployed-app.vercel.app]](https://crypto-weather-nexus-hs6v.vercel.app/))
 
 This project is deployed on [Vercel](https://vercel.com/) with environment variables securely managed in the dashboard.
 
